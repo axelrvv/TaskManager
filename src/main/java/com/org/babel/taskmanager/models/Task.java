@@ -11,14 +11,20 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long task_id;
-    private String task_name;
-    private String task_description;
+    @Column(name = "task_id")
+    private Long taskID;
+    @Column(name = "task_name")
+    private String taskName;
+    @Column(name = "task_description")
+    private String taskDescription;
+    @Column(name = "task_creation_date")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date task_creation_date;
+    private Date taskCreationDate;
+    @Column(name = "task_expiration_date")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date task_expiration_date;
-    private String task_status;
+    private Date taskExpirationDate;
+    @Column(name = "task_status")
+    private String taskStatus;
     @ManyToMany
     @JoinTable(
             name = "user_task",
@@ -27,52 +33,52 @@ public class Task {
     )
     private List<User> users;
 
-    public Long getTask_id() {
-        return task_id;
+    public Long getTaskID() {
+        return taskID;
     }
 
-    public void setTask_id(Long task_id) {
-        this.task_id = task_id;
+    public void setTaskID(Long task_id) {
+        this.taskID = task_id;
     }
 
-    public String getTask_name() {
-        return task_name;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTask_name(String task_name) {
-        this.task_name = task_name;
+    public void setTaskName(String task_name) {
+        this.taskName = task_name;
     }
 
-    public String getTask_description() {
-        return task_description;
+    public String getTaskDescription() {
+        return taskDescription;
     }
 
-    public void setTask_description(String task_description) {
-        this.task_description = task_description;
+    public void setTaskDescription(String task_description) {
+        this.taskDescription = task_description;
     }
 
-    public String getTask_status() {
-        return task_status;
+    public String getTaskStatus() {
+        return taskStatus;
     }
 
-    public void setTask_status(String task_status) {
-        this.task_status = task_status;
+    public void setTaskStatus(String task_status) {
+        this.taskStatus = task_status;
     }
 
-    public Date getTask_creation_date() {
-        return task_creation_date;
+    public Date getTaskCreationDate() {
+        return taskCreationDate;
     }
 
-    public void setTask_creation_date(Date task_creation_date) {
-        this.task_creation_date = task_creation_date;
+    public void setTaskCreationDate(Date task_creation_date) {
+        this.taskCreationDate = task_creation_date;
     }
 
-    public Date getTask_expiration_date() {
-        return task_expiration_date;
+    public Date getTaskExpirationDate() {
+        return taskExpirationDate;
     }
 
-    public void setTask_expiration_date(Date task_expiration_date) {
-        this.task_expiration_date = task_expiration_date;
+    public void setTaskExpirationDate(Date task_expiration_date) {
+        this.taskExpirationDate = task_expiration_date;
     }
 
     public List<User> getUsers() {

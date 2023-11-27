@@ -55,7 +55,7 @@ significativamente?**
 
 *Otra opción validar las consultas de la base de datos (oportunidades de mejora), hacerle tuning a varios scripts de base de datos de ser necesario.*
 
-*Pero en general, muchas de estas cosas se procuran en el diseño y desarrollo del servicio, si todo está estable a nivel de código el GO TO deberia ser aumentar las capacidades del servidor*
+*Pero en general, muchas de estas cosas se procuran en el diseño y desarrollo del servicio, si todo está estable a nivel de código el GO TO deberia ser aumentar las capacidades del servidor.*
 
 **¿Cómo gestionarías las actualizaciones de la base de datos sin tiempo de inactividad?**
 

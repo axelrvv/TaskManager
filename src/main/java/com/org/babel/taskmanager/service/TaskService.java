@@ -26,7 +26,7 @@ public class TaskService {
     public Task updateTask(Long id,Task task){
         Task existingTask = getTask(id);
 
-        if(existingTask.getTask_id() != null){
+        if(existingTask.getTaskID() != null){
             BeanUtils.copyProperties(task, existingTask,"task_id");
             taskRepository.save(existingTask);
             return existingTask;

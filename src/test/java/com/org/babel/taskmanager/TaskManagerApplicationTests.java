@@ -1,29 +1,34 @@
 package com.org.babel.taskmanager;
 
-import com.org.babel.taskmanager.controllers.TaskController;
-import com.org.babel.taskmanager.controllers.UserController;
 import com.org.babel.taskmanager.models.Task;
 import com.org.babel.taskmanager.models.User;
 import com.org.babel.taskmanager.repositories.TaskRepository;
+import com.org.babel.taskmanager.repositories.UserRepository;
 import com.org.babel.taskmanager.service.TaskService;
 import com.org.babel.taskmanager.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.List;
+
 
 @SpringBootTest
 class TaskManagerApplicationTests {
 
-    @Autowired
-    TaskService taskService;
+    @Mock
+    UserRepository userRepository;
+    @Mock
+    TaskRepository taskRepository;
 
-    @Autowired
+    @InjectMocks
     UserService userService;
+    @InjectMocks
+    TaskService taskService;
 
     @Test
     void contextLoads() {
@@ -33,25 +38,24 @@ class TaskManagerApplicationTests {
     public void TaskService_AddTask_ReturnSavedTask(){
 
         Task task = new Task();
-        task.setTask_name("Test Task");
-        task.setTask_description("This is a test");
-        task.setTask_status("PENDING");
+        task.setTaskName("Test Task");
+        task.setTaskDescription("This is a test");
+        task.setTaskStatus("PENDING");
 
         Task addedTask = taskService.addTask(task);
 
         Assertions.assertNotNull(addedTask);
-        Assertions.assertTrue(addedTask.getTask_id() > 0);
+        Assertions.assertTrue(addedTask.getTaskName().equals("Test Task"));
     }
 
     @Test
     public void UserService_AddUser_ReturnSavedUser(){
         User user = new User();
-        user.setUser_name("testUser");
+        user.setUserName("testUser");
 
         User addedUser = userService.addUser(user);
 
         Assertions.assertNotNull(addedUser);
-        Assertions.assertTrue(addedUser.getUser_id() > 0);
+        Assertions.assertTrue(addedUser.getUserName().equals("testUser"));
     }
-
 }

@@ -6,7 +6,6 @@ import com.org.babel.taskmanager.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,7 +26,7 @@ public class UserService {
     public User updateUser(Long id,User user){
         User existingUser = getUser(id);
 
-        if(existingUser.getUser_id() != null){
+        if(existingUser.getUserId() != null){
             BeanUtils.copyProperties(user, existingUser,"user_id");
             userRepository.save(existingUser);
             return existingUser;
